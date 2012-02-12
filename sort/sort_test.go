@@ -1,4 +1,5 @@
 package main
+
 import (
 	"bufio"
 	"os"
@@ -63,26 +64,26 @@ func Test_Sort(t *testing.T) {
 	}
 
 	// Insertion sort
-        localList2 := make(itemSlice, totalSize)
-        copy(localList2, list)
-        start = time.Nanoseconds()
-        localList2.InsertionSort()
-        end = time.Nanoseconds()
-        t.Log("Ellapsed time for insertion sort: ", (end-start)/1000000.0, " ms")
-        if localList2.IsSorted() != true {
-        t.Errorf("Sorting is wrong")
-        }
+	localList2 := make(itemSlice, totalSize)
+	copy(localList2, list)
+	start = time.Nanoseconds()
+	localList2.InsertionSort()
+	end = time.Nanoseconds()
+	t.Log("Ellapsed time for insertion sort: ", (end-start)/1000000.0, " ms")
+	if localList2.IsSorted() != true {
+		t.Errorf("Sorting is wrong")
+	}
 
 	// Shell sort
-        localList3 := make(itemSlice, totalSize)
-        copy(localList3, list)
-        start = time.Nanoseconds()
-        localList3.ShellSort()
-        end = time.Nanoseconds()
-        println("Ellapsed time for shell sort: ", (end-start)/1000000.0, " ms")
-        if localList3.IsSorted() != true {
-        t.Errorf("Sorting is wrong")
-        }
+	localList3 := make(itemSlice, totalSize)
+	copy(localList3, list)
+	start = time.Nanoseconds()
+	localList3.ShellSort()
+	end = time.Nanoseconds()
+	println("Ellapsed time for shell sort: ", (end-start)/1000000.0, " ms")
+	if localList3.IsSorted() != true {
+		t.Errorf("Sorting is wrong")
+	}
 
 	// Merge sort top-down
 	localList4 := make(itemSlice, totalSize)
