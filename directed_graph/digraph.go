@@ -89,4 +89,13 @@ func main() {
     // Test BFS
     fmt.Println("Result for BFS")
     fmt.Println(DirectedBFS(g, 3))
+
+    //Test DAG
+    if c := DAG(g); c != nil {
+            fmt.Println("Found cycle: ")
+            for e := c.Front(); e != nil; e = e.Next() {
+                    fmt.Printf("%v -> ", e.Value)
+            }
+            fmt.Printf("\n")
+    }
 }
