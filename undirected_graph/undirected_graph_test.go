@@ -6,21 +6,24 @@ import (
 )
 
 func Test_ugraph(t *testing.T) {
-    graph := New(13)
-    graph.AddEdge(0,1)
-    graph.AddEdge(0,2)
-    graph.AddEdge(0,5)
-    graph.AddEdge(0,6)
-    graph.AddEdge(3,4)
-    graph.AddEdge(3,5)
-    graph.AddEdge(4,6)
-    graph.AddEdge(7,8)
-    graph.AddEdge(9,10)
-    graph.AddEdge(9,11)
-    graph.AddEdge(9,12)
-    graph.AddEdge(11,12)
+    graph := NewGraph()
+    for i:=0; i<13; i++ {
+            graph.AddVertex(i)
+    }
+    graph.AddEdge(0,1,1)
+    graph.AddEdge(0,2,1)
+    graph.AddEdge(0,5,1)
+    graph.AddEdge(0,6,1)
+    graph.AddEdge(3,4,1)
+    graph.AddEdge(3,5,1)
+    graph.AddEdge(4,6,1)
+    graph.AddEdge(7,8,1)
+    graph.AddEdge(9,10,1)
+    graph.AddEdge(9,11,1)
+    graph.AddEdge(9,12,1)
+    graph.AddEdge(11,12,1)
     fmt.Println(graph.ToString())
-    if graph.V() != 13 {t.Errorf("Wrong vertices number")}
-    if graph.E() != 12 {t.Errorf("Wrong edges number")}
+    if graph.VNum() != 13 {t.Errorf("Wrong vertices number")}
+    if graph.ENum() != 12 {t.Errorf("Wrong edges number")}
     if graph.Degree(1) != 1 {t.Errorf("Wrong degree for vertex 1")}
 }
