@@ -129,9 +129,9 @@ func (g *Digraph) Adj(v int) []*VW {
 func (g *Digraph) Reverse() *Digraph {
 	newg := NewDigraph()
 	for _, src := range g.V {
-                // Add same vertex
-                newg.AddVertex(src)
-                // Add reversed edge
+		// Add same vertex
+		newg.AddVertex(src)
+		// Add reversed edge
 		for _, dst := range g.adj[src] {
 			newg.adj[dst.vertex] = append(newg.adj[dst.vertex], &VW{src, dst.weight})
 		}
@@ -215,7 +215,7 @@ func main() {
 	fmt.Println("Result for BFS")
 	fmt.Println(DirectedBFS(newg, 6))
 
-	//Test DAG
+	// Test DAG
 	if c := DAG(g); c != nil {
 		fmt.Println("Found cycle: ")
 		for e := c.Front(); e != nil; e = e.Next() {
@@ -223,4 +223,33 @@ func main() {
 		}
 		fmt.Printf("\n")
 	}
+
+	// Test SCC
+	g = NewDigraph()
+	for i := 0; i < 13; i++ {
+		g.AddVertex(i)
+	}
+	g.AddEdge(0, 1, 1)
+	g.AddEdge(0, 5, 1)
+	g.AddEdge(2, 0, 1)
+	g.AddEdge(2, 3, 1)
+	g.AddEdge(3, 2, 1)
+	g.AddEdge(3, 5, 3)
+	g.AddEdge(4, 2, 3)
+	g.AddEdge(4, 3, 4)
+	g.AddEdge(5, 4, 4)
+	g.AddEdge(6, 9, 5)
+	g.AddEdge(6, 0, 6)
+	g.AddEdge(6, 4, 1)
+	g.AddEdge(7, 6, 1)
+	g.AddEdge(7, 8, 1)
+	g.AddEdge(8, 7, 1)
+	g.AddEdge(8, 9, 1)
+	g.AddEdge(9, 10, 1)
+	g.AddEdge(9, 11, 1)
+	g.AddEdge(10, 12, 1)
+	g.AddEdge(11, 4, 1)
+	g.AddEdge(11, 12, 1)
+	g.AddEdge(12, 9, 1)
+	fmt.Println(SCC(g))
 }

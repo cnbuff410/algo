@@ -14,19 +14,19 @@ var (
 // the graph is DAG and return nil
 func DAG(g *Digraph) *list.List {
 	marked = make(map[int]bool)
-        for _, v := range g.Vertex() {
-                marked[v] = false
-        }
+	for _, v := range g.Vertex() {
+		marked[v] = false
+	}
 	onstack = make(map[int]bool)
-        for _, v := range g.Vertex() {
-                onstack[v] = false
-        }
+	for _, v := range g.Vertex() {
+		onstack[v] = false
+	}
 	edgeTo = make([]int, g.VNum()*2)
 	hasCycle = false
-        for _, i := range g.Vertex() {
+	for _, i := range g.Vertex() {
 		edgeTo[i] = -1
 	}
-        for _, v := range g.Vertex() {
+	for _, v := range g.Vertex() {
 		if c := dagdfs(g, v); c != nil {
 			return c
 		}
@@ -41,7 +41,7 @@ func dagdfs(g *Digraph, s int) *list.List {
 		if hasCycle {
 			return cycle
 		}
-                v := vw.vertex
+		v := vw.vertex
 		if !marked[v] {
 			edgeTo[v] = s
 			dagdfs(g, v)
@@ -51,7 +51,7 @@ func dagdfs(g *Digraph, s int) *list.List {
 			for x := s; x != v && x != -1; x = edgeTo[x] {
 				cycle.PushFront(x)
 			}
-                        cycle.PushBack(v)
+			cycle.PushBack(v)
 			cycle.PushFront(v)
 			hasCycle = true
 		}

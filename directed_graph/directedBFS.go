@@ -5,9 +5,9 @@ import "container/list"
 // Find vertices in g that are reachable from s 
 func DirectedBFS(g *Digraph, s int) map[int]bool {
 	marked := make(map[int]bool)
-        for _, v := range g.Vertex() {
-                marked[v] = false
-        }
+	for _, v := range g.Vertex() {
+		marked[v] = false
+	}
 	bfs(g, s, marked)
 	return marked
 }
