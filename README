@@ -1,3 +1,10 @@
 Just some basic algorithms and data structures in Go language. They were coded
 when I was learning the Go, and I put them here in case any novice need to
 refer to them.
+
+DISCLAIMER: 
+These implementations are not generalized and well tested. Rather,
+they should be seen simply as serving the purpose of offering reference to
+basic structure of several popular algorithm. I myself use some of them in my
+project and every single time I need to make significant changes to adapt to
+specific project.
